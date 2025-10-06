@@ -27,10 +27,9 @@ export default function RootLayout({
         <div className="fixed inset-0 -z-10 pointer-events-none">
           <LetterGlitch
             glitchSpeed={50}
-            centerVignette={false}
+            centerVignette={true}
             outerVignette={false}
-            smooth
-          />
+            smooth={true} glitchColors={['#2b4539', '#61dca3', '#61b3dc']} characters={'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>.,0123456789'}          />
         </div>
 
         <Navbar />
