@@ -26,7 +26,7 @@ export default function Navbar() {
   const listRef = useRef<HTMLDivElement | null>(null);
   const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
-  const resumeHref = "/resume";
+  //const resumeHref = "/resume";
 
   const indicatorStyle = useMemo(
     () => ({
@@ -227,7 +227,6 @@ export default function Navbar() {
 
         <div className="mt-auto flex flex-col gap-4">
           <a
-            href={resumeHref}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-semibold text-black transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
           >
             <FileText className="h-4 w-4" />
