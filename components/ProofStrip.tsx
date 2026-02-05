@@ -29,7 +29,7 @@ const ITEMS: ProofItem[] = [
   {
     org: "AIMA",
     role: "Startup (Client demos / product)",
-    logoSrc: "/aima-logo-nobg-qz0s47VK.png",
+    logoSrc: "/aima-logo-nobg-qz0s47Vk.png",
     Icon: Rocket,
   },
   {
