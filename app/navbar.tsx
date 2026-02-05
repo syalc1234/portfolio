@@ -1,5 +1,4 @@
 import CardNav from '../components/CardNav'
-import logo from './images/schedule.png'
 
 export default function Navbar() {
   const items = [
