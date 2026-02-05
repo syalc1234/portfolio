@@ -5,7 +5,7 @@ import TechCarousel from "@/components/TechCarousel";
 export default function HomePage() {
   return (
     <main className="relative w-full">
-      <section className="relative left-1/2 -mx-[50vw] w-screen overflow-hidden">
+      <section className="relative left-1/2 -mx-[50vw] w-screen overflow-hidden m:-0.8em">
         <div className="absolute inset-0 z-0">
           <LetterGlitch
             glitchSpeed={50}
