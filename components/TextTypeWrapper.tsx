@@ -2,17 +2,19 @@
 
 import TextType from "./TextType";
 
-export default function TextTypeWrapper() {
+type TextTypeWrapperProps = {
+  className?: string;
+};
+
+export default function TextTypeWrapper({ className = "" }: TextTypeWrapperProps) {
   return (
     <TextType
-      text={["Welcome to my Portfolio", "Have a look around!"]}
-      typingSpeed={75}
-      pauseDuration={1500}
+      text={["Software engineer focused on fintech", "performance", "and building things that matter..."]}
+      typingSpeed={10}
+      pauseDuration={1000}
       showCursor
       cursorCharacter="|"
-      onSentenceComplete={() => {
-        console.log("Sentence finished typing!");
-      }}
+      className={`block w-full ${className}`}
     />
   );
 }

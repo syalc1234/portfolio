@@ -1,13 +1,13 @@
 // app/layout.tsx (RootLayout)
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import LetterGlitch from "@/components/LetterGlitch";
-import Navbar from "./navbar";
-import TextTypeWrapper from "@/components/TextTypeWrapper";
+import Navbar from "@/components/Navbar";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,23 +21,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative min-h-screen`}
-      >
-        <div className="fixed inset-0 -z-10 pointer-events-none">
-          <LetterGlitch
-            glitchSpeed={50}
-            centerVignette={true}
-            outerVignette={false}
-            smooth={true} glitchColors={['#2b4539', '#61dca3', '#61b3dc']} characters={'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>.,0123456789'}          />
-        </div>
-
+      <body className={`${jetBrainsMono.variable} antialiased`}>
         <Navbar />
-
-        <main className="flex min-h-[calc(100vh-4rem)] items-center justify-center text-2xl">
-          <TextTypeWrapper />
-        </main>
-
         <div className="relative z-10">{children}</div>
       </body>
     </html>
