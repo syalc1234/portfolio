@@ -55,12 +55,6 @@ const TextType = ({
 
   const textArray = useMemo(() => (Array.isArray(text) ? text : [text]), [text]);
 
-  const getRandomSpeed = useCallback(() => {
-    if (!variableSpeed) return typingSpeed;
-    const { min, max } = variableSpeed;
-    return Math.random() * (max - min) + min;
-  }, [variableSpeed, typingSpeed]);
-
   const getCurrentTextColor = () => {
     if (textColors.length === 0) return '#ffffff';
     return textColors[currentTextIndex % textColors.length];
@@ -104,6 +98,12 @@ const TextType = ({
 
     const currentText = textArray[currentTextIndex];
     const processedText = reverseMode ? currentText.split('').reverse().join('') : currentText;
+
+    const getRandomSpeed = () => {
+      if (!variableSpeed) return typingSpeed;
+      const { min, max } = variableSpeed;
+      return Math.random() * (max - min) + min;
+    };
 
     const executeTypingAnimation = () => {
       if (isDeleting) {
@@ -163,7 +163,6 @@ const TextType = ({
     isVisible,
     reverseMode,
     variableSpeed,
-    getRandomSpeed,
     onSentenceComplete
   ]);
 
