@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${jetBrainsMono.variable} antialiased bg-[#05070a] text-white overflow-hidden`}>
+      <body className={`${jetBrainsMono.variable} antialiased bg-[#05070a] text-white overflow-x-hidden`}>
         <Navbar />
         <div className="relative z-10">{children}</div>
       </body>
