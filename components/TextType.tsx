@@ -1,6 +1,6 @@
 'use client';
 
-import { ElementType, useEffect, useRef, useState, createElement, useMemo, useCallback } from 'react';
+import { ElementType, useEffect, useRef, useState, createElement, useMemo } from 'react';
 import { gsap } from 'gsap';
 
 interface TextTypeProps {
@@ -50,6 +50,7 @@ const TextType = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(!startOnVisible);
+  const [reduceMotion, setReduceMotion] = useState(false);
   const cursorRef = useRef<HTMLSpanElement>(null);
   const containerRef = useRef<HTMLElement>(null);
 
@@ -59,6 +60,18 @@ const TextType = ({
     if (textColors.length === 0) return '#ffffff';
     return textColors[currentTextIndex % textColors.length];
   };
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => setReduceMotion(media.matches);
+    update();
+    media.addEventListener?.('change', update);
+    media.addListener?.(update);
+    return () => {
+      media.removeEventListener?.('change', update);
+      media.removeListener?.(update);
+    };
+  }, []);
 
   useEffect(() => {
     if (!startOnVisible || !containerRef.current) return;
@@ -80,6 +93,11 @@ const TextType = ({
 
   useEffect(() => {
     if (showCursor && cursorRef.current) {
+      if (reduceMotion) {
+        gsap.set(cursorRef.current, { opacity: 1 });
+        return;
+      }
+
       gsap.set(cursorRef.current, { opacity: 1 });
       gsap.to(cursorRef.current, {
         opacity: 0,
@@ -89,9 +107,14 @@ const TextType = ({
         ease: 'power2.inOut'
       });
     }
-  }, [showCursor, cursorBlinkDuration]);
+  }, [showCursor, cursorBlinkDuration, reduceMotion]);
 
   useEffect(() => {
+    if (reduceMotion) {
+      setDisplayedText(textArray[0] ?? '');
+      return;
+    }
+
     if (!isVisible) return;
 
     let timeout: NodeJS.Timeout;
@@ -161,6 +184,7 @@ const TextType = ({
     loop,
     initialDelay,
     isVisible,
+    reduceMotion,
     reverseMode,
     variableSpeed,
     onSentenceComplete

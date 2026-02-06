@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { FileText, Github, Linkedin, Menu, X } from "lucide-react";
+import Link from "next/link";
 
 type NavItem = {
   id: string;
@@ -9,12 +10,13 @@ type NavItem = {
 };
 
 const NAV_ITEMS: NavItem[] = [
-  //{ id: "projects", label: "Projects" },
-  //{ id: "contact", label: "Contact" },
+  { id: "about", label: "About" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
 ];
 
 const ICON_BUTTON =
-  "inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40";
+  "inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 sm:h-10 sm:w-10";
 
 export default function Navbar() {
   const [activeId, setActiveId] = useState<string>("about");
@@ -100,31 +102,67 @@ export default function Navbar() {
     return () => document.removeEventListener("keydown", handleKey);
   }, [drawerOpen]);
 
+  useEffect(() => {
+    // Lock body scroll when the drawer is open to prevent background drift on mobile.
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = drawerOpen ? "hidden" : previous || "";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [drawerOpen]);
+
   return (
     <>
-      <div className="sticky top-4 z-50 flex w-full justify-center px-4">
+      <div className="sticky top-3 z-50 flex w-full justify-center px-3 sm:top-4 sm:px-4">
         <nav
           className={`relative isolate flex w-full max-w-6xl items-center justify-between gap-4
   rounded-2xl overflow-hidden
   border border-white/10
-  px-4 py-3 sm:px-6
-  shadow-[0_8px_30px_rgba(0,0,0,0.35)]
-  backdrop-blur-xl
+  px-3 py-2 sm:px-6 sm:py-3
+  shadow-[0_6px_20px_rgba(0,0,0,0.4)] sm:shadow-[0_8px_30px_rgba(0,0,0,0.35)]
+  backdrop-blur-md sm:backdrop-blur-xl
   transition-colors motion-reduce:transition-none
   ${scrolled ? "bg-black/45" : "bg-black/25"}`}
           aria-label="Primary"
         >
-          <a
+          <Link
             href="/"
             className="flex items-center gap-3 text-white/90 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
           >
             <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-semibold uppercase tracking-[0.2em]">
               SY
             </span>
-            <span className="text-base font-semibold tracking-tight">Sean Yalçın</span>
-          </a>
+            <span className="text-sm font-semibold tracking-tight sm:text-base">Sean Yalçın</span>
+          </Link>
 
-         
+          <div className="relative hidden items-center justify-center md:flex">
+            <div
+              ref={listRef}
+              className="relative flex items-center gap-4 rounded-full px-2 py-2 text-sm font-medium text-white/70"
+            >
+              <span
+                className="pointer-events-none absolute left-0 top-1/2 h-9 -translate-y-1/2 rounded-full bg-white/10 transition-transform duration-300 motion-reduce:transition-none"
+                style={indicatorStyle}
+                aria-hidden
+              />
+              {NAV_ITEMS.map((item) => (
+                <a
+                  key={item.id}
+                  ref={(el) => {
+                    linkRefs.current[item.id] = el;
+                  }}
+                  href={`#${item.id}`}
+                  aria-current={activeId === item.id ? "page" : undefined}
+                  className={`relative z-10 px-3 py-2 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 ${
+                    activeId === item.id ? "text-white" : "text-white/70"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
           <div className="hidden items-center gap-3 md:flex">
             
             <a
@@ -190,7 +228,7 @@ export default function Navbar() {
             <a
               key={item.id}
               href={`#${item.id}`}
-              className="rounded-lg px-3 py-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+              className="rounded-lg px-3 py-3 text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
               onClick={() => setDrawerOpen(false)}
             >
               {item.label}

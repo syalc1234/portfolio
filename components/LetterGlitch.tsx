@@ -1,5 +1,5 @@
 "use client"
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 const LetterGlitch = ({
   glitchColors = ['#2b4539', '#61dca3', '#61b3dc'],
@@ -26,15 +26,17 @@ const LetterGlitch = ({
       colorProgress: number;
     }[]
   >([]);
+  const metricsRef = useRef({ fontSize: 16, charWidth: 10, charHeight: 20 });
+  const [motionProfile, setMotionProfile] = useState({
+    speed: glitchSpeed,
+    updateRatio: 0.05,
+    smooth
+  });
   const grid = useRef({ columns: 0, rows: 0 });
   const context = useRef<CanvasRenderingContext2D | null>(null);
   const lastGlitchTime = useRef(Date.now());
 
   const lettersAndSymbols = Array.from(characters);
-
-  const fontSize = 16;
-  const charWidth = 10;
-  const charHeight = 20;
 
   const getRandomChar = () => {
     return lettersAndSymbols[Math.floor(Math.random() * lettersAndSymbols.length)];
@@ -74,6 +76,7 @@ const LetterGlitch = ({
   };
 
   const calculateGrid = (width: number, height: number) => {
+    const { charWidth, charHeight } = metricsRef.current;
     const columns = Math.ceil(width / charWidth);
     const rows = Math.ceil(height / charHeight);
     return { columns, rows };
@@ -119,9 +122,10 @@ const LetterGlitch = ({
     const ctx = context.current;
     const { width, height } = canvasRef.current!.getBoundingClientRect();
     ctx.clearRect(0, 0, width, height);
-    ctx.font = `${fontSize}px monospace`;
+    ctx.font = `${metricsRef.current.fontSize}px monospace`;
     ctx.textBaseline = 'top';
 
+    const { charWidth, charHeight } = metricsRef.current;
     letters.current.forEach((letter, index) => {
       const x = (index % grid.current.columns) * charWidth;
       const y = Math.floor(index / grid.current.columns) * charHeight;
@@ -133,7 +137,10 @@ const LetterGlitch = ({
   const updateLetters = () => {
     if (!letters.current || letters.current.length === 0) return;
 
-    const updateCount = Math.max(1, Math.floor(letters.current.length * 0.05));
+    const updateCount = Math.max(
+      1,
+      Math.floor(letters.current.length * motionProfile.updateRatio)
+    );
 
     for (let i = 0; i < updateCount; i++) {
       const index = Math.floor(Math.random() * letters.current.length);
@@ -142,7 +149,7 @@ const LetterGlitch = ({
       letters.current[index].char = getRandomChar();
       letters.current[index].targetColor = getRandomColor();
 
-      if (!smooth) {
+      if (!motionProfile.smooth) {
         letters.current[index].color = letters.current[index].targetColor;
         letters.current[index].colorProgress = 1;
       } else {
@@ -174,18 +181,62 @@ const LetterGlitch = ({
 
   const animate = () => {
     const now = Date.now();
-    if (now - lastGlitchTime.current >= glitchSpeed) {
+    if (now - lastGlitchTime.current >= motionProfile.speed) {
       updateLetters();
       drawLetters();
       lastGlitchTime.current = now;
     }
 
-    if (smooth) {
+    if (motionProfile.smooth) {
       handleSmoothTransitions();
     }
 
     animationRef.current = requestAnimationFrame(animate);
   };
+
+  useEffect(() => {
+    // Reduce canvas work on small screens and for users who prefer less motion.
+    if (typeof window === 'undefined') return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const smallScreen = window.matchMedia('(max-width: 640px)');
+
+    const updateProfile = () => {
+      const isReduced = reducedMotion.matches;
+      const isSmall = smallScreen.matches;
+
+      metricsRef.current = isReduced
+        ? { fontSize: 18, charWidth: 12, charHeight: 24 }
+        : isSmall
+        ? { fontSize: 16, charWidth: 11, charHeight: 22 }
+        : { fontSize: 16, charWidth: 10, charHeight: 20 };
+
+      setMotionProfile({
+        speed: isReduced ? Math.max(glitchSpeed, 140) : isSmall ? Math.max(glitchSpeed, 90) : glitchSpeed,
+        updateRatio: isReduced ? 0.015 : isSmall ? 0.03 : 0.05,
+        smooth: isReduced ? false : smooth
+      });
+
+      if (canvasRef.current) {
+        resizeCanvas();
+      }
+    };
+
+    updateProfile();
+
+    const handleChange = () => updateProfile();
+    reducedMotion.addEventListener?.('change', handleChange);
+    smallScreen.addEventListener?.('change', handleChange);
+    reducedMotion.addListener?.(handleChange);
+    smallScreen.addListener?.(handleChange);
+
+    return () => {
+      reducedMotion.removeEventListener?.('change', handleChange);
+      smallScreen.removeEventListener?.('change', handleChange);
+      reducedMotion.removeListener?.(handleChange);
+      smallScreen.removeListener?.(handleChange);
+    };
+  }, [glitchSpeed, smooth]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -213,7 +264,7 @@ const LetterGlitch = ({
       window.removeEventListener('resize', handleResize);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [glitchSpeed, smooth]);
+  }, [motionProfile.speed, motionProfile.smooth]);
 
   return (
     <div className="relative w-full h-full bg-black overflow-hidden">
