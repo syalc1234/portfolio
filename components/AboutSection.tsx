@@ -32,7 +32,7 @@ const highlights = [
     title: "Full-Stack Builder",
     icon: Layers,
     bullets: [
-      "Own API-to-UI delivery for real internal users.",
+      "API-to-UI delivery for real internal users.",
       "Data-heavy dashboards with clear interaction design.",
     ],
   },
@@ -164,7 +164,7 @@ export default function AboutSection() {
                     Systems Builder
                   </h2>
                   <p className="max-w-prose text-sm leading-relaxed text-white/70 sm:text-base">
-                    I am Sean Yalcin, a final-year Computer Science student at &apos;s
+                    I am Sean Yalcin, a final-year Computer Science student at Queen&apos;s
                     University Belfast and incoming SWE at Citi.
                   </p>
                 </div>
@@ -198,13 +198,6 @@ export default function AboutSection() {
 
                 {/* Stack CTAs on mobile for comfortable taps. */}
                 <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a
-                    href={`mailto:${contactEmail}`}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-3 text-sm font-semibold text-white/80 transition-colors hover:border-white/40 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 motion-reduce:transition-none sm:w-auto"
-                  >
-                    Contact
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
                   <Link
                     href="https://github.com/syalc1234"
                     className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-transparent px-4 py-3 text-sm font-semibold text-white/70 transition-colors hover:border-white/40 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 motion-reduce:transition-none sm:w-auto"
