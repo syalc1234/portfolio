@@ -9,9 +9,8 @@ type NavItem = {
 };
 
 const NAV_ITEMS: NavItem[] = [
-  { id: "about", label: "About" },
-  { id: "projects", label: "Projects" },
-  { id: "contact", label: "Contact" },
+  //{ id: "projects", label: "Projects" },
+  //{ id: "contact", label: "Contact" },
 ];
 
 const ICON_BUTTON =
@@ -116,7 +115,7 @@ export default function Navbar() {
           aria-label="Primary"
         >
           <a
-            href="#top"
+            href="/"
             className="flex items-center gap-3 text-white/90 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
           >
             <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-semibold uppercase tracking-[0.2em]">
@@ -125,33 +124,7 @@ export default function Navbar() {
             <span className="text-base font-semibold tracking-tight">Sean Yalçın</span>
           </a>
 
-          <div className="relative hidden items-center justify-center md:flex">
-            <div
-              ref={listRef}
-              className="relative flex items-center gap-6 rounded-full px-2 py-2 text-sm font-medium text-white/70"
-            >
-              <span
-                className="pointer-events-none absolute left-0 top-1/2 h-9 -translate-y-1/2 rounded-full bg-white/10 transition-transform duration-300 motion-reduce:transition-none"
-                style={indicatorStyle}
-                aria-hidden
-              />
-              {NAV_ITEMS.map((item) => (
-                <a
-                  key={item.id}
-                  ref={(el) => {
-                    linkRefs.current[item.id] = el;
-                  }}
-                  href={`#${item.id}`}
-                  aria-current={activeId === item.id ? "page" : undefined}
-                  className={`relative z-10 px-3 py-2 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 ${activeId === item.id ? "text-white" : "text-white/70"
-                    }`}
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-
+         
           <div className="hidden items-center gap-3 md:flex">
             
             <a

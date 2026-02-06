@@ -9,8 +9,8 @@ type TextTypeWrapperProps = {
 export default function TextTypeWrapper({ className = "" }: TextTypeWrapperProps) {
   return (
     <TextType
-      text={["Software engineer focused on fintech", "performance", "and building things that matter..."]}
-      typingSpeed={10}
+      text={["Software engineer focused on fintech"]}
+      typingSpeed={100}
       pauseDuration={1000}
       showCursor
       cursorCharacter="|"

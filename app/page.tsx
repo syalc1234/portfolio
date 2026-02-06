@@ -1,4 +1,5 @@
 import LetterGlitch from "@/components/LetterGlitch";
+import AboutSection from "@/components/AboutSection";
 import ProofStrip from "@/components/ProofStrip";
 import TextTypeWrapper from "@/components/TextTypeWrapper";
 import TechCarousel from "@/components/TechCarousel";
@@ -23,6 +24,7 @@ export default function HomePage() {
       </section>
       <TechCarousel />
       <ProofStrip />
+      <AboutSection />
     </main>
   );
 }
