@@ -14,6 +14,7 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
+import ProofStrip from "@/components/ProofStrip";
 
 const heroLines = [
   "Incoming Graduate Software Engineer at Citi in London.",
@@ -291,6 +292,7 @@ export default function AboutSection() {
 
       <section className="relative">
         <div className="mx-auto w-full max-w-6xl px-6 pb-16">
+
           <div className={`${cardBase} p-6 sm:p-8`}>
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
@@ -305,6 +307,9 @@ export default function AboutSection() {
                 <BadgeCheck className="h-4 w-4" />
                 Internships
               </div>
+            </div>
+            <div className="mt-6">
+              <ProofStrip variant="embedded" className="bg-white/0 shadow-none" />
             </div>
             <div className="relative mt-8">
               <div className="absolute left-3 top-0 h-full w-px bg-white/10" />
