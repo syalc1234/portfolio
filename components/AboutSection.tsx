@@ -164,7 +164,7 @@ export default function AboutSection() {
                     Systems Builder
                   </h2>
                   <p className="max-w-prose text-sm leading-relaxed text-white/70 sm:text-base">
-                    I am Sean Yalcin, a final-year Computer Science student at Queen's
+                    I am Sean Yalcin, a final-year Computer Science student at &apos;s
                     University Belfast and incoming SWE at Citi.
                   </p>
                 </div>
