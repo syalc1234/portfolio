@@ -21,7 +21,7 @@ type ProofStripProps = {
 const ITEMS: ProofItem[] = [
   {
     org: "Citi",
-    role: "Equity Derivs / Custody",
+    role: "Equity Derivatives & Custody",
     logoSrc: "/Citi_logo_March_2023.svg.png",
     logoAlt: "Citi logo",
   },

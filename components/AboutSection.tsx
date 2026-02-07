@@ -65,7 +65,7 @@ const highlights = [
 const experience = [
   {
     company: "AIMA",
-    role: "Startup Intern / Builder",
+    role: "Full Stack SWE (Python + React)",
     focus: "Product demos and feature delivery",
     bullets: [
       "Built demo-ready features used for investor and client storytelling.",
@@ -74,17 +74,17 @@ const experience = [
   },
   {
     company: "Citi",
-    role: "Equity Derivatives Intern",
-    focus: "Trading & risk workflows",
+    role: "Full Stack SWE",
+    focus: "Equity Derivatives",
     bullets: [
       "Built internal tooling to surface trade lifecycle insights for desks.",
-      "Worked with quants and engineers to align model outputs with UI.",
+      "Designed a system architecture diagram to support intraday trade amendments in order booking."
     ],
   },
   {
     company: "Citi",
-    role: "Custody Full Stack Intern",
-    focus: "Operational platforms",
+    role: "Full Stack SWE (Angular + TS + Java)",
+    focus: "Custody platforms",
     bullets: [
       "Shipped features that improved data visibility across custody flows.",
       "Supported API integrations and front-end views for operations teams.",
@@ -92,11 +92,11 @@ const experience = [
   },
   {
     company: "Allstate",
-    role: "QA Engineering Intern",
+    role: "QA Engineering (Java + Selenium)",
     focus: "Automation and reliability",
     bullets: [
       "Implemented Selenium test suites to harden critical user flows.",
-      "Partnered with developers to close gaps in regression coverage.",
+      "Performed exploratory and regression testing, identifying and logging critical defects.",
     ],
   },
 
@@ -105,7 +105,6 @@ const experience = [
 const nowItems = [
   "Final-year dissertation exploring GPU-accelerated option pricing.",
   "Building out a clean, high-signal portfolio and project archive.",
-  "Deepening my knowledge of market microstructure and quant tooling.",
 ];
 
 const outsideTags = [
@@ -124,7 +123,7 @@ const quickFacts = [
   },
   {
     label: "Status",
-    value: "Final-year CS @ Queen's University Belfast",
+    value: "Final-year CS @ Queen's University Belfast, Incoming SWE @ Citi",
     icon: GraduationCap,
   },
   {
@@ -163,10 +162,6 @@ export default function AboutSection() {
                   <h2 className="text-balance text-[clamp(1.75rem,6vw,3rem)] font-semibold tracking-tight text-white">
                     Systems Builder
                   </h2>
-                  <p className="max-w-prose text-sm leading-relaxed text-white/70 sm:text-base">
-                    I am Sean Yalcin, a final-year Computer Science student at Queen&apos;s
-                    University Belfast and incoming SWE at Citi.
-                  </p>
                 </div>
 
                 <div
@@ -276,7 +271,7 @@ export default function AboutSection() {
       </section>
 
 
-      <section className="relative">
+      <section id="experience" className="relative">
         <div className="page-container section-space">
 
           <div className={`${cardBase} p-5 sm:p-8`}>
@@ -348,9 +343,7 @@ export default function AboutSection() {
                 Balanced energy, clear head.
               </h3>
               <p className="mt-3 max-w-prose text-sm text-white/70">
-                I stay sharp by keeping the routine simple and the community close.
-                Running keeps me grounded, golf keeps me patient, and volunteering
-                keeps me connected.
+                Beyond my professional work, I serve on the board of Fence Like an Olympian, a Belfast-based fencing organization, and work as a Crew Trainer at McDonald's. In my personal time, I enjoy staying active through golf, running, and going to the gym.
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
                 {outsideTags.map((tag) => (

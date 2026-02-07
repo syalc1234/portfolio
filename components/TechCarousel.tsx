@@ -1,5 +1,5 @@
 import { FaJava } from "react-icons/fa";
-import { SiAngular, SiDocker, SiPython, SiReact, SiTypescript } from "react-icons/si";
+import { SiAngular, SiDocker, SiPython, SiReact, SiTypescript, SiRedhat, SiVercel } from "react-icons/si";
 
 const TECH = [
   { name: "Java", Icon: FaJava, color: "#F97316" },
@@ -7,7 +7,9 @@ const TECH = [
   { name: "TypeScript", Icon: SiTypescript, color: "#60A5FA" },
   { name: "React", Icon: SiReact, color: "#22D3EE" },
   { name: "Python", Icon: SiPython, color: "#F59E0B" },
-  { name: "Angular", Icon: SiAngular, color: "#F43F5E" }
+  { name: "Angular", Icon: SiAngular, color: "#F43F5E" },
+  { name: "RHEL", Icon: SiRedhat , color: "#EE0000" },
+  { name: "Vercel", Icon: SiVercel  , color: "#000000" }
 ];
 
 function Track({ reverse = false }: { reverse?: boolean }) {
