@@ -343,7 +343,7 @@ export default function AboutSection() {
                 Balanced energy, clear head.
               </h3>
               <p className="mt-3 max-w-prose text-sm text-white/70">
-                Beyond my professional work, I serve on the board of Fence Like an Olympian, a Belfast-based fencing organization, and work as a Crew Trainer at McDonald's. In my personal time, I enjoy staying active through golf, running, and going to the gym.
+                Beyond my professional work, I serve on the board of Fence Like an Olympian, a Belfast-based fencing organization, and work as a Crew Trainer at McDonald&apos;s. In my personal time, I enjoy staying active through golf, running, and going to the gym.
               </p>
               <div className="mt-5 flex flex-wrap gap-3">
                 {outsideTags.map((tag) => (
