@@ -12,9 +12,13 @@ export default function TextTypeWrapper({ className = "", as }: TextTypeWrapperP
   return (
     <TextType
       as={as}
-      text={["Software engineer focused on fintech"]}
-      typingSpeed={100}
-      pauseDuration={1000}
+      text={[
+        "Software engineer for fintech systems",
+        "Full-stack builder for high-signal products",
+      ]}
+      typingSpeed={55}
+      pauseDuration={1800}
+      deletingSpeed={22}
       showCursor
       cursorCharacter="|"
       className={`block w-full ${className}`}

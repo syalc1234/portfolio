@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { FileText, Github, Linkedin, Menu, X } from "lucide-react";
+import { Github, Linkedin, Mail, Menu, X } from "lucide-react";
 import Link from "next/link";
 
 type NavItem = {
@@ -12,6 +12,7 @@ type NavItem = {
 const NAV_ITEMS: NavItem[] = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
+  { id: "contact", label: "Contact" },
 ];
 
 const ICON_BUTTON =
@@ -25,8 +26,6 @@ export default function Navbar() {
 
   const listRef = useRef<HTMLDivElement | null>(null);
   const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
-
-  //const resumeHref = "/resume";
 
   const indicatorStyle = useMemo(
     () => ({
@@ -79,8 +78,10 @@ export default function Navbar() {
 
       const containerRect = container.getBoundingClientRect();
       const activeRect = activeEl.getBoundingClientRect();
-      const left = activeRect.left - containerRect.left;
-      setIndicator({ left, width: activeRect.width });
+      setIndicator({
+        left: activeRect.left - containerRect.left,
+        width: activeRect.width,
+      });
     };
 
     updateIndicator();
@@ -102,7 +103,6 @@ export default function Navbar() {
   }, [drawerOpen]);
 
   useEffect(() => {
-    // Lock body scroll when the drawer is open to prevent background drift on mobile.
     const previous = document.body.style.overflow;
     document.body.style.overflow = drawerOpen ? "hidden" : previous || "";
     return () => {
@@ -110,28 +110,35 @@ export default function Navbar() {
     };
   }, [drawerOpen]);
 
+  const handleNavClick = (id: string) => {
+    setActiveId(id);
+    setDrawerOpen(false);
+  };
+
   return (
     <>
       <div className="sticky top-3 z-50 flex w-full justify-center px-3 sm:top-4 sm:px-4">
         <nav
-          className={`relative isolate flex w-full max-w-6xl items-center justify-between gap-4
-  rounded-2xl overflow-hidden
-  border border-white/10
-  px-3 py-2 sm:px-6 sm:py-3
-  shadow-[0_6px_20px_rgba(0,0,0,0.4)] sm:shadow-[0_8px_30px_rgba(0,0,0,0.35)]
-  backdrop-blur-md sm:backdrop-blur-xl
-  transition-colors motion-reduce:transition-none
-  ${scrolled ? "bg-black/45" : "bg-black/25"}`}
+          className={`relative isolate flex w-full max-w-6xl items-center justify-between gap-4 overflow-hidden rounded-2xl border border-white/10 px-3 py-2 shadow-[0_6px_20px_rgba(0,0,0,0.4)] backdrop-blur-md transition-colors motion-reduce:transition-none sm:px-6 sm:py-3 sm:shadow-[0_8px_30px_rgba(0,0,0,0.35)] sm:backdrop-blur-xl ${
+            scrolled ? "bg-[#07111a]/82" : "bg-[#07111a]/58"
+          }`}
           aria-label="Primary"
         >
           <Link
             href="/"
             className="flex items-center gap-3 text-white/90 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-semibold uppercase tracking-[0.2em]">
+            <span className="font-mono-accent flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-semibold uppercase tracking-[0.2em]">
               SY
             </span>
-            <span className="text-sm font-semibold tracking-tight sm:text-base">Sean Yalçın</span>
+            <div className="leading-tight">
+              <span className="block text-sm font-semibold tracking-tight sm:text-base">
+                Sean Yalcin
+              </span>
+              <span className="font-mono-accent hidden text-[0.62rem] uppercase tracking-[0.22em] text-white/45 sm:block">
+                Software Engineer
+              </span>
+            </div>
           </Link>
 
           <div className="relative hidden items-center justify-center md:flex">
@@ -152,6 +159,7 @@ export default function Navbar() {
                   }}
                   href={`#${item.id}`}
                   aria-current={activeId === item.id ? "page" : undefined}
+                  onClick={() => handleNavClick(item.id)}
                   className={`relative z-10 px-3 py-2 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 ${
                     activeId === item.id ? "text-white" : "text-white/70"
                   }`}
@@ -163,7 +171,6 @@ export default function Navbar() {
           </div>
 
           <div className="hidden items-center gap-3 md:flex">
-            
             <a
               className={ICON_BUTTON}
               href="https://github.com/syalc1234"
@@ -197,21 +204,25 @@ export default function Navbar() {
       </div>
 
       <div
-        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-300 motion-reduce:transition-none ${drawerOpen ? "opacity-100" : "pointer-events-none opacity-0"
-          }`}
+        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-300 motion-reduce:transition-none ${
+          drawerOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
         onClick={() => setDrawerOpen(false)}
         aria-hidden={!drawerOpen}
       />
 
       <aside
-        className={`fixed right-0 top-0 z-50 flex h-full w-[80vw] max-w-sm flex-col gap-8 border-l border-white/10 bg-[#0b0f14]/95 p-6 text-white shadow-2xl transition-transform duration-300 motion-reduce:transition-none ${drawerOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+        className={`fixed right-0 top-0 z-50 flex h-full w-[80vw] max-w-sm flex-col gap-8 border-l border-white/10 bg-[#0b0f14]/95 p-6 text-white shadow-2xl transition-transform duration-300 motion-reduce:transition-none ${
+          drawerOpen ? "translate-x-0" : "translate-x-full"
+        }`}
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation"
       >
         <div className="flex items-center justify-between">
-          <span className="text-sm font-semibold uppercase tracking-[0.2em] text-white/80">Menu</span>
+          <span className="font-mono-accent text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
+            Menu
+          </span>
           <button
             type="button"
             className={ICON_BUTTON}
@@ -227,8 +238,8 @@ export default function Navbar() {
             <a
               key={item.id}
               href={`#${item.id}`}
+              onClick={() => handleNavClick(item.id)}
               className="rounded-lg px-3 py-3 text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
-              onClick={() => setDrawerOpen(false)}
             >
               {item.label}
             </a>
@@ -237,15 +248,16 @@ export default function Navbar() {
 
         <div className="mt-auto flex flex-col gap-4">
           <a
+            href="mailto:syalcin01@qub.ac.uk"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-semibold text-black transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
           >
-            <FileText className="h-4 w-4" />
-            Resume
+            <Mail className="h-4 w-4" />
+            Email
           </a>
           <div className="flex items-center gap-3">
             <a
               className={ICON_BUTTON}
-              href="https://github.com/"
+              href="https://github.com/syalc1234"
               aria-label="GitHub profile"
               target="_blank"
               rel="noreferrer"
@@ -254,7 +266,7 @@ export default function Navbar() {
             </a>
             <a
               className={ICON_BUTTON}
-              href="https://www.linkedin.com/"
+              href="https://www.linkedin.com/in/seany2004/"
               aria-label="LinkedIn profile"
               target="_blank"
               rel="noreferrer"

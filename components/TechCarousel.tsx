@@ -1,5 +1,13 @@
 import { FaJava } from "react-icons/fa";
-import { SiAngular, SiDocker, SiPython, SiReact, SiTypescript, SiRedhat, SiVercel } from "react-icons/si";
+import {
+  SiAngular,
+  SiDocker,
+  SiPython,
+  SiReact,
+  SiRedhat,
+  SiTypescript,
+  SiVercel,
+} from "react-icons/si";
 
 const TECH = [
   { name: "Java", Icon: FaJava, color: "#F97316" },
@@ -8,27 +16,24 @@ const TECH = [
   { name: "React", Icon: SiReact, color: "#22D3EE" },
   { name: "Python", Icon: SiPython, color: "#F59E0B" },
   { name: "Angular", Icon: SiAngular, color: "#F43F5E" },
-  { name: "RHEL", Icon: SiRedhat , color: "#EE0000" },
-  { name: "Vercel", Icon: SiVercel  , color: "#000000" }
+  { name: "RHEL", Icon: SiRedhat, color: "#EE0000" },
+  { name: "Vercel", Icon: SiVercel, color: "#FFFFFF" },
 ];
 
-function Track({ reverse = false }: { reverse?: boolean }) {
+function Track() {
   return (
-    <div
-      className={`flex w-[200%] items-center gap-6 sm:gap-10 motion-reduce:animate-none ${
-        reverse ? "animate-marquee-reverse" : "animate-marquee"
-      }`}
-    >
+    <div className="animate-marquee flex w-[200%] items-center gap-4 motion-reduce:animate-none sm:gap-6">
       {[...TECH, ...TECH].map((item, index) => {
         const Icon = item.Icon;
+
         return (
           <div
             key={`${item.name}-${index}`}
-            className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-white/80 backdrop-blur-md sm:px-6 sm:py-3 sm:backdrop-blur-xl"
+            className="flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2.5 text-white/82 backdrop-blur-md sm:px-5"
             aria-hidden={index >= TECH.length}
           >
-            <Icon className="h-6 w-6 sm:h-7 sm:w-7" style={{ color: item.color }} />
-            <span className="text-xs uppercase tracking-[0.24em] sm:text-sm">
+            <Icon className="h-5 w-5 sm:h-[1.35rem] sm:w-[1.35rem]" style={{ color: item.color }} />
+            <span className="font-mono-accent text-[0.68rem] uppercase tracking-[0.22em] sm:text-[0.72rem]">
               {item.name}
             </span>
           </div>
@@ -40,22 +45,28 @@ function Track({ reverse = false }: { reverse?: boolean }) {
 
 export default function TechCarousel() {
   return (
-    <section className="relative left-1/2 -mx-[50vw] w-screen bg-[#05070a] text-white pt-8 sm:pt-10">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+    <section className="relative left-1/2 -mx-[50vw] w-screen text-white">
+      <div className="page-container py-8 sm:py-10">
+        <div className="surface-panel overflow-hidden px-4 py-5 sm:px-6">
+          <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="font-mono-accent text-[0.68rem] uppercase tracking-[0.24em] text-white/48">
+                Toolkit
+              </p>
+              <h2 className="mt-2 text-xl font-semibold text-white sm:text-2xl">
+                Tools I ship with most often.
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-6 text-white/58">
+              Full-stack tools used across trading systems, product demos, UI delivery, and QA.
+            </p>
+          </div>
 
-      <div className="page-container section-space pt-0">
-        <div className="mb-6 flex items-center justify-center gap-6 sm:mb-8">
-          <h2 className="text-balance text-xl font-semibold tracking-tight sm:text-3xl">
-            Tech Stack 
-          </h2>
-        </div>
+          <div className="hairline mb-5" />
 
-        <div className="relative overflow-hidden">
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#05070a] to-transparent sm:w-24" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#05070a] to-transparent sm:w-24" />
-
-          <div className="flex flex-col gap-6">
+          <div className="relative overflow-hidden">
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-[#08111a] to-transparent sm:w-20" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[#08111a] to-transparent sm:w-20" />
             <Track />
           </div>
         </div>

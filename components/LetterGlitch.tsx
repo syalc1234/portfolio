@@ -236,6 +236,7 @@ const LetterGlitch = ({
       reducedMotion.removeListener?.(handleChange);
       smallScreen.removeListener?.(handleChange);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [glitchSpeed, smooth]);
 
   useEffect(() => {
