@@ -27,7 +27,7 @@ export default function HomePage() {
         </div>
         <div className="absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(4,8,13,0.58)_0%,rgba(4,8,13,0.76)_40%,rgba(4,8,13,0.97)_100%)]" />
 
-        <div className="relative z-20 px-4 pb-18 pt-16 text-white sm:px-6 sm:pb-24 sm:pt-22">
+        <div className="relative z-20 px-4 pb-18 pt-24 text-white sm:px-6 sm:pb-24 sm:pt-30">
           <div className="page-container">
             <div className="surface-panel overflow-hidden">
               <div className="grid gap-10 px-5 py-8 sm:px-8 sm:py-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-12 lg:px-10 lg:py-12">

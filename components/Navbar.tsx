@@ -117,7 +117,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="sticky top-3 z-50 flex w-full justify-center px-3 sm:top-4 sm:px-4">
+      <div className="fixed inset-x-0 top-3 z-50 flex w-full justify-center px-3 sm:top-4 sm:px-4">
         <nav
           className={`relative isolate flex w-full max-w-6xl items-center justify-between gap-4 overflow-hidden rounded-2xl border border-white/10 px-3 py-2 shadow-[0_6px_20px_rgba(0,0,0,0.4)] backdrop-blur-md transition-colors motion-reduce:transition-none sm:px-6 sm:py-3 sm:shadow-[0_8px_30px_rgba(0,0,0,0.35)] sm:backdrop-blur-xl ${
             scrolled ? "bg-[#07111a]/82" : "bg-[#07111a]/58"
