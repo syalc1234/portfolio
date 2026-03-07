@@ -12,7 +12,6 @@ type NavItem = {
 const NAV_ITEMS: NavItem[] = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
-  { id: "contact", label: "Contact" },
 ];
 
 const ICON_BUTTON =

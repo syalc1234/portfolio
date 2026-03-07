@@ -19,11 +19,6 @@ const contactEmail = "syalcin01@qub.ac.uk";
 
 const highlights = [
   {
-    title: "Fintech SWE",
-    icon: CandlestickChart,
-    bullets: ["Pricing, trade capture, and risk tooling exposure.", "Comfortable in regulated environments."],
-  },
-  {
     title: "Full-Stack Builder",
     icon: Layers,
     bullets: ["API-to-UI delivery for real users.", "Clear frontends for data-heavy workflows."],
@@ -89,7 +84,7 @@ const nowItems = [
   "Sharpening this portfolio into a cleaner project archive.",
 ];
 
-const outsideTags = ["Running", "Golf", "Volunteering", "Student societies", "Mentoring"];
+const outsideTags = ["Running", "Golf", "Volunteering", "Mentoring", "Hackathons",];
 
 const quickFacts = [
   {
@@ -101,12 +96,7 @@ const quickFacts = [
     label: "Status",
     value: "Final-year CS @ Queen's University Belfast, incoming SWE @ Citi",
     icon: GraduationCap,
-  },
-  {
-    label: "Focus",
-    value: "Fintech systems and performance-heavy tooling",
-    icon: LineChart,
-  },
+  }
 ];
 
 export default function AboutSection() {
@@ -131,11 +121,6 @@ export default function AboutSection() {
                   <h2 className="display-title max-w-[12ch] text-[clamp(2.4rem,6vw,4.6rem)] leading-[0.95]">
                     Building useful software for complex environments.
                   </h2>
-                  <p className="muted-copy max-w-[42rem]">
-                    I like products that reduce cognitive load. Most of my experience sits at the
-                    intersection of full-stack engineering, financial systems, and internal tools
-                    that need to be clear under pressure.
-                  </p>
                   <p className="muted-copy max-w-[40rem]">
                     The work I enjoy most is turning messy workflows into reliable interfaces with
                     clean architecture behind them.
@@ -149,13 +134,6 @@ export default function AboutSection() {
                     View projects
                     <ArrowUpRight className="h-4 w-4" />
                   </Link>
-                  <a
-                    href={`mailto:${contactEmail}`}
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-white/18 bg-white/[0.03] px-5 py-3 text-sm font-semibold text-white/84 transition-colors hover:bg-white/[0.08]"
-                  >
-                    Email
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
                 </div>
               </div>
 
@@ -166,12 +144,7 @@ export default function AboutSection() {
                     className="surface-panel rounded-[1.45rem] p-5"
                   >
                     <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <p className="font-mono-accent text-[0.68rem] uppercase tracking-[0.22em] text-white/48">
-                          Strength
-                        </p>
-                        <h3 className="mt-2 text-lg font-semibold text-white">{item.title}</h3>
-                      </div>
+                      <h3 className="mt-2 text-lg font-semibold text-white">{item.title}</h3>
                       <item.icon className="mt-1 h-5 w-5 text-emerald-200/70" />
                     </div>
                     <ul className="mt-4 space-y-2 text-sm text-white/68">
@@ -259,9 +232,6 @@ export default function AboutSection() {
           <div className="surface-panel p-5 sm:p-8">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <p className="font-mono-accent text-[0.68rem] uppercase tracking-[0.24em] text-white/52">
-                  Experience
-                </p>
                 <h3 className="display-title mt-3 text-[clamp(2rem,4vw,3.2rem)] leading-none">
                   Roles that shaped how I build.
                 </h3>
@@ -272,12 +242,6 @@ export default function AboutSection() {
               </div>
             </div>
 
-            <div className="mt-6">
-              <ProofStrip
-                variant="embedded"
-                className="border-white/0 bg-transparent shadow-none backdrop-blur-none"
-              />
-            </div>
 
             <div className="relative mt-8">
               <div className="absolute left-2 top-0 h-full w-px bg-white/10 sm:left-3" />
@@ -317,28 +281,9 @@ export default function AboutSection() {
         <div className="page-container pb-20 sm:pb-24">
           <div className="grid gap-5 lg:grid-cols-[1.08fr_0.92fr]">
             <div className="surface-panel p-5 sm:p-6">
-              <p className="font-mono-accent text-[0.68rem] uppercase tracking-[0.24em] text-white/52">
-                Contact
-              </p>
-              <h3 className="mt-3 text-2xl font-semibold text-white">Best reached by email or LinkedIn.</h3>
-              <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href={`mailto:${contactEmail}`}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition-colors hover:bg-white/90"
-                >
-                  Email
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/seany2004/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/18 bg-white/[0.03] px-5 py-3 text-sm font-semibold text-white/82 transition-colors hover:bg-white/[0.08]"
-                >
-                  LinkedIn
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-              </div>
+              <h2 className="mt-2 text-xl font-semibold text-white sm:text-2xl">
+                Outside of Work
+              </h2>
               <p className="mt-3 max-w-prose text-sm leading-7 text-white/70">
                 I serve on the board of Fence Like an Olympian in Belfast and work as a crew trainer
                 at McDonald&apos;s. Outside work, I stay active through golf, running, the gym, and

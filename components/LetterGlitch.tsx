@@ -5,7 +5,7 @@ const LetterGlitch = ({
   glitchColors = ['#2b4539', '#61dca3', '#61b3dc'],
   glitchSpeed = 50,
   centerVignette = false,
-  outerVignette = true,
+  outerVignette = false,
   smooth = true,
   characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>.,0123456789'
 }: {
@@ -26,7 +26,7 @@ const LetterGlitch = ({
       colorProgress: number;
     }[]
   >([]);
-  const metricsRef = useRef({ fontSize: 16, charWidth: 10, charHeight: 20 });
+  const metricsRef = useRef({ fontSize: 24, charWidth: 16, charHeight: 28 });
   const [motionProfile, setMotionProfile] = useState({
     speed: glitchSpeed,
     updateRatio: 0.05,
@@ -206,10 +206,10 @@ const LetterGlitch = ({
       const isSmall = smallScreen.matches;
 
       metricsRef.current = isReduced
-        ? { fontSize: 18, charWidth: 12, charHeight: 24 }
+        ? { fontSize: 20, charWidth: 13, charHeight: 24 }
         : isSmall
-        ? { fontSize: 16, charWidth: 11, charHeight: 22 }
-        : { fontSize: 16, charWidth: 10, charHeight: 20 };
+        ? { fontSize: 18, charWidth: 12, charHeight: 22 }
+        : { fontSize: 24, charWidth: 16, charHeight: 28 };
 
       setMotionProfile({
         speed: isReduced ? Math.max(glitchSpeed, 140) : isSmall ? Math.max(glitchSpeed, 90) : glitchSpeed,

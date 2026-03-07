@@ -50,16 +50,10 @@ export default function TechCarousel() {
         <div className="surface-panel overflow-hidden px-4 py-5 sm:px-6">
           <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="font-mono-accent text-[0.68rem] uppercase tracking-[0.24em] text-white/48">
-                Toolkit
-              </p>
               <h2 className="mt-2 text-xl font-semibold text-white sm:text-2xl">
-                Tools I ship with most often.
+              Toolkit:
               </h2>
             </div>
-            <p className="max-w-xl text-sm leading-6 text-white/58">
-              Full-stack tools used across trading systems, product demos, UI delivery, and QA.
-            </p>
           </div>
 
           <div className="hairline mb-5" />
