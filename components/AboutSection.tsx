@@ -233,7 +233,7 @@ export default function AboutSection() {
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
                 <h3 className="display-title mt-3 text-[clamp(2rem,4vw,3.2rem)] leading-none">
-                  Roles that shaped how I build.
+                  Roles that shaped how I build:
                 </h3>
               </div>
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/60">
@@ -282,7 +282,7 @@ export default function AboutSection() {
           <div className="grid gap-5 lg:grid-cols-[1.08fr_0.92fr]">
             <div className="surface-panel p-5 sm:p-6">
               <h2 className="mt-2 text-xl font-semibold text-white sm:text-2xl">
-                Outside of Work
+              Outside of Work:
               </h2>
               <p className="mt-3 max-w-prose text-sm leading-7 text-white/70">
                 I serve on the board of Fence Like an Olympian in Belfast and work as a crew trainer

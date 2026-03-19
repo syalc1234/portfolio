@@ -54,17 +54,11 @@ const ITEMS: ProofItem[] = [
 export default function ProofStrip({ variant = "full", className = "" }: ProofStripProps) {
   const inner = (
     <div className={`surface-panel px-4 py-4 sm:px-6 sm:py-5 ${className}`}>
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="font-mono-accent text-[0.68rem] uppercase tracking-[0.24em] text-white/48">
-            Selected experience
-          </p>
-          <p className="mt-2 text-sm leading-6 text-white/62">
-            Teams and organisations that shaped how I build.
-          </p>
-        </div>
-
-        <ul className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-1 sm:flex-wrap sm:justify-end sm:overflow-visible sm:pb-0">
+      <div className="flex flex-col gap-5">
+        <h2 className="mt-2 text-xl font-semibold text-white sm:text-2xl">
+          Experience:
+        </h2>
+        <ul className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0">
           {ITEMS.map((item) => {
             const Icon = item.Icon;
 

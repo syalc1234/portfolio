@@ -156,7 +156,7 @@ html {
   }
 
   .display-title {
-    font-family: var(--font-fraunces), serif;
+    font-family: var(--font-jetbrains-mono), serif;
     @apply text-balance tracking-[-0.04em] text-white;
   }
 
