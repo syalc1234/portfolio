@@ -25,7 +25,7 @@ export default function HomePage() {
             <div className="flex w-full max-w-5xl justify-center text-center">
               <TextTypeWrapper
                 as="p"
-                className="font-mono-accent w-full text-sm uppercase tracking-[0.22em] text-[#5c6d61] sm:text-base"
+                className="font-mono-accent w-full text-[clamp(1.35rem,2.8vw,2.25rem)] uppercase tracking-[0.16em] text-[#5d5246] sm:leading-[1.35]"
               />
             </div>
           </div>

@@ -14,7 +14,7 @@ export default function TextTypeWrapper({ className = "", as }: TextTypeWrapperP
       as={as}
       text={[
         "Software engineer for fintech systems",
-        "Full-stack builder for high-signal products",
+        "Full-stack builder.",
       ]}
       typingSpeed={55}
       pauseDuration={1800}

@@ -57,7 +57,7 @@ const TextType = ({
   const textArray = useMemo(() => (Array.isArray(text) ? text : [text]), [text]);
 
   const getCurrentTextColor = () => {
-    if (textColors.length === 0) return '#ffffff';
+    if (textColors.length === 0) return 'currentColor';
     return textColors[currentTextIndex % textColors.length];
   };
 
