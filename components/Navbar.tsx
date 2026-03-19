@@ -15,7 +15,7 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 const ICON_BUTTON =
-  "inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 sm:h-10 sm:w-10";
+  "inline-flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-[#f7f0e6]/88 text-[#5f5549] transition-colors hover:bg-[#efe5d7] hover:text-[#221910] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2d6a5b]/35 sm:h-10 sm:w-10";
 
 export default function Navbar() {
   const [activeId, setActiveId] = useState<string>("about");
@@ -118,23 +118,23 @@ export default function Navbar() {
     <>
       <div className="fixed inset-x-0 top-3 z-50 flex w-full justify-center px-3 sm:top-4 sm:px-4">
         <nav
-          className={`relative isolate flex w-full max-w-6xl items-center justify-between gap-4 overflow-hidden rounded-2xl border border-white/10 px-3 py-2 shadow-[0_6px_20px_rgba(0,0,0,0.4)] backdrop-blur-md transition-colors motion-reduce:transition-none sm:px-6 sm:py-3 sm:shadow-[0_8px_30px_rgba(0,0,0,0.35)] sm:backdrop-blur-xl ${
-            scrolled ? "bg-[#07111a]/82" : "bg-[#07111a]/58"
+          className={`relative isolate flex w-full max-w-6xl items-center justify-between gap-4 overflow-hidden rounded-2xl border border-black/10 px-3 py-2 shadow-[0_8px_24px_rgba(74,56,38,0.12)] backdrop-blur-md transition-colors motion-reduce:transition-none sm:px-6 sm:py-3 sm:shadow-[0_10px_34px_rgba(74,56,38,0.14)] sm:backdrop-blur-xl ${
+            scrolled ? "bg-[#f3ecdf]/88" : "bg-[#f6efe3]/72"
           }`}
           aria-label="Primary"
         >
           <Link
             href="/"
-            className="flex items-center gap-3 text-white/90 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            className="flex items-center gap-3 text-[#2a2118] transition-colors hover:text-[#000000] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2d6a5b]/35"
           >
-            <span className="font-mono-accent flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/10 text-sm font-semibold uppercase tracking-[0.2em]">
+            <span className="font-mono-accent flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-[#eadfce] text-sm font-semibold uppercase tracking-[0.2em] text-[#2a2118]">
               SY
             </span>
             <div className="leading-tight">
               <span className="block text-sm font-semibold tracking-tight sm:text-base">
                 Sean Yalcin
               </span>
-              <span className="font-mono-accent hidden text-[0.62rem] uppercase tracking-[0.22em] text-white/45 sm:block">
+              <span className="font-mono-accent hidden text-[0.62rem] uppercase tracking-[0.22em] text-[#7c6e5c] sm:block">
                 Software Engineer
               </span>
             </div>
@@ -143,10 +143,10 @@ export default function Navbar() {
           <div className="relative hidden items-center justify-center md:flex">
             <div
               ref={listRef}
-              className="relative flex items-center gap-4 rounded-full px-2 py-2 text-sm font-medium text-white/70"
+              className="relative flex items-center gap-4 rounded-full px-2 py-2 text-sm font-medium text-[#6f6458]"
             >
               <span
-                className="pointer-events-none absolute left-0 top-1/2 h-9 -translate-y-1/2 rounded-full bg-white/10 transition-transform duration-300 motion-reduce:transition-none"
+                className="pointer-events-none absolute left-0 top-1/2 h-9 -translate-y-1/2 rounded-full bg-[#e3d5c1] transition-transform duration-300 motion-reduce:transition-none"
                 style={indicatorStyle}
                 aria-hidden
               />
@@ -159,8 +159,8 @@ export default function Navbar() {
                   href={`#${item.id}`}
                   aria-current={activeId === item.id ? "page" : undefined}
                   onClick={() => handleNavClick(item.id)}
-                  className={`relative z-10 px-3 py-2 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 ${
-                    activeId === item.id ? "text-white" : "text-white/70"
+                  className={`relative z-10 px-3 py-2 transition-colors hover:text-[#221910] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2d6a5b]/35 ${
+                    activeId === item.id ? "text-[#221910]" : "text-[#6f6458]"
                   }`}
                 >
                   {item.label}
@@ -203,7 +203,7 @@ export default function Navbar() {
       </div>
 
       <div
-        className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-300 motion-reduce:transition-none ${
+        className={`fixed inset-0 z-40 bg-[#6f5c46]/22 backdrop-blur-sm transition-opacity duration-300 motion-reduce:transition-none ${
           drawerOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setDrawerOpen(false)}
@@ -211,7 +211,7 @@ export default function Navbar() {
       />
 
       <aside
-        className={`fixed right-0 top-0 z-50 flex h-full w-[80vw] max-w-sm flex-col gap-8 border-l border-white/10 bg-[#0b0f14]/95 p-6 text-white shadow-2xl transition-transform duration-300 motion-reduce:transition-none ${
+        className={`fixed right-0 top-0 z-50 flex h-full w-[80vw] max-w-sm flex-col gap-8 border-l border-black/10 bg-[#f4ede2]/96 p-6 text-[#261f17] shadow-[0_20px_60px_rgba(74,56,38,0.18)] transition-transform duration-300 motion-reduce:transition-none ${
           drawerOpen ? "translate-x-0" : "translate-x-full"
         }`}
         role="dialog"
@@ -219,7 +219,7 @@ export default function Navbar() {
         aria-label="Mobile navigation"
       >
         <div className="flex items-center justify-between">
-          <span className="font-mono-accent text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
+          <span className="font-mono-accent text-sm font-semibold uppercase tracking-[0.2em] text-[#675948]">
             Menu
           </span>
           <button
@@ -238,7 +238,7 @@ export default function Navbar() {
               key={item.id}
               href={`#${item.id}`}
               onClick={() => handleNavClick(item.id)}
-              className="rounded-lg px-3 py-3 text-white/80 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+              className="rounded-lg px-3 py-3 text-[#5f5549] transition-colors hover:bg-[#eadfce] hover:text-[#221910] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2d6a5b]/35"
             >
               {item.label}
             </a>
@@ -248,7 +248,7 @@ export default function Navbar() {
         <div className="mt-auto flex flex-col gap-4">
           <a
             href="mailto:syalcin01@qub.ac.uk"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-semibold text-black transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#2d6a5b] px-4 py-3 text-sm font-semibold text-[#f8f3eb] transition-colors hover:bg-[#25584b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2d6a5b]/35"
           >
             <Mail className="h-4 w-4" />
             Email

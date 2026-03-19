@@ -14,18 +14,18 @@ export default function HomePage() {
             centerVignette={true}
             outerVignette={false}
             smooth={true}
-            glitchColors={["#2b4539", "#61dca3", "#61b3dc"]}
+            glitchColors={["#8f6f49", "#2d6a5b", "#b48356"]}
             characters={"ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>.,0123456789"}
           />
         </div>
-        <div className="absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(4,8,13,0.58)_0%,rgba(4,8,13,0.76)_40%,rgba(4,8,13,0.97)_100%)]" />
+        <div className="absolute inset-0 z-10 bg-[linear-gradient(180deg,rgba(246,239,228,0.42)_0%,rgba(234,226,213,0.68)_45%,rgba(227,221,211,0.94)_100%)]" />
 
-        <div className="relative z-20 flex min-h-[72vh] items-center px-4 py-24 text-white sm:min-h-[82vh] sm:px-6 sm:py-32">
+        <div className="relative z-20 flex min-h-[72vh] items-center px-4 py-24 text-[#261f17] sm:min-h-[82vh] sm:px-6 sm:py-32">
           <div className="page-container flex justify-center">
             <div className="flex w-full max-w-5xl justify-center text-center">
               <TextTypeWrapper
                 as="p"
-                className="font-mono-accent w-full text-sm uppercase tracking-[0.22em] text-emerald-200/80 sm:text-base"
+                className="font-mono-accent w-full text-sm uppercase tracking-[0.22em] text-[#5c6d61] sm:text-base"
               />
             </div>
           </div>

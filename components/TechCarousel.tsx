@@ -27,11 +27,11 @@ function Track() {
         const Icon = item.Icon;
 
         return (
-          <div
-            key={`${item.name}-${index}`}
-            className="flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2.5 text-white/82 backdrop-blur-md sm:px-5"
-            aria-hidden={index >= TECH.length}
-          >
+        <div
+          key={`${item.name}-${index}`}
+          className="flex items-center gap-3 rounded-full border border-black/10 bg-[#f8f2e7]/82 px-4 py-2.5 text-[#3f3328] backdrop-blur-md sm:px-5"
+          aria-hidden={index >= TECH.length}
+        >
             <Icon className="h-5 w-5 sm:h-[1.35rem] sm:w-[1.35rem]" style={{ color: item.color }} />
             <span className="font-mono-accent text-[0.68rem] uppercase tracking-[0.22em] sm:text-[0.72rem]">
               {item.name}
@@ -45,12 +45,12 @@ function Track() {
 
 export default function TechCarousel() {
   return (
-    <section className="relative left-1/2 -mx-[50vw] w-screen text-white">
+    <section className="relative left-1/2 -mx-[50vw] w-screen text-[#261f17]">
       <div className="page-container py-8 sm:py-10">
         <div className="surface-panel overflow-hidden px-4 py-5 sm:px-6">
           <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h2 className="mt-2 text-xl font-semibold text-white sm:text-2xl">
+              <h2 className="mt-2 text-xl font-semibold text-[#221910] sm:text-2xl">
               Toolkit:
               </h2>
             </div>
@@ -59,8 +59,8 @@ export default function TechCarousel() {
           <div className="hairline mb-5" />
 
           <div className="relative overflow-hidden">
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-[#08111a] to-transparent sm:w-20" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[#08111a] to-transparent sm:w-20" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-[#f5eee3] to-transparent sm:w-20" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[#f5eee3] to-transparent sm:w-20" />
             <Track />
           </div>
         </div>

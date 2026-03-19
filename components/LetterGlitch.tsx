@@ -268,13 +268,13 @@ const LetterGlitch = ({
   }, [motionProfile.speed, motionProfile.smooth]);
 
   return (
-    <div className="relative w-full h-full bg-black overflow-hidden">
+    <div className="relative h-full w-full overflow-hidden bg-[#efe8dc]">
       <canvas ref={canvasRef} className="block w-full h-full" />
       {outerVignette && (
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,_rgba(0,0,0,0)_60%,_rgba(0,0,0,1)_100%)]"></div>
+        <div className="absolute left-0 top-0 h-full w-full pointer-events-none bg-[radial-gradient(circle,_rgba(227,221,211,0)_60%,_rgba(106,84,58,0.3)_100%)]"></div>
       )}
       {centerVignette && (
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,_rgba(0,0,0,0.8)_0%,_rgba(0,0,0,0)_60%)]"></div>
+        <div className="absolute left-0 top-0 h-full w-full pointer-events-none bg-[radial-gradient(circle,_rgba(248,243,235,0.7)_0%,_rgba(248,243,235,0)_60%)]"></div>
       )}
     </div>
   );

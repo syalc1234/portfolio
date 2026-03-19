@@ -2,18 +2,15 @@ import Link from "next/link";
 import {
   ArrowUpRight,
   BadgeCheck,
-  CandlestickChart,
   Gauge,
   Globe,
   GraduationCap,
   Layers,
-  LineChart,
   Rocket,
   ShieldCheck,
   Sparkles,
   Users,
 } from "lucide-react";
-import ProofStrip from "@/components/ProofStrip";
 
 const contactEmail = "syalcin01@qub.ac.uk";
 
@@ -103,9 +100,9 @@ export default function AboutSection() {
   return (
     <section className="relative w-full overflow-hidden">
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-32 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.22),rgba(15,23,42,0.04)_60%,transparent_72%)] blur-3xl" />
-        <div className="absolute right-[-120px] top-24 h-[360px] w-[360px] rounded-full bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.18),rgba(15,23,42,0.03)_55%,transparent_70%)] blur-[120px]" />
-        <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(5,7,10,0.28)_40%,#05070a_100%)]" />
+        <div className="absolute -top-32 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(205,165,112,0.22),rgba(227,221,211,0.04)_60%,transparent_72%)] blur-3xl" />
+        <div className="absolute right-[-120px] top-24 h-[360px] w-[360px] rounded-full bg-[radial-gradient(circle_at_center,rgba(45,106,91,0.16),rgba(227,221,211,0.03)_55%,transparent_70%)] blur-[120px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(188,173,153,0.18)_46%,rgba(221,211,198,0.54)_100%)]" />
       </div>
 
       <section id="about" className="relative scroll-mt-24 sm:scroll-mt-28">
@@ -129,7 +126,7 @@ export default function AboutSection() {
                 <div className="flex flex-col gap-3 sm:flex-row">
                   <Link
                     href="https://github.com/syalc1234"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-emerald-50"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#2d6a5b] px-5 py-3 text-sm font-semibold text-[#f8f3eb] transition-colors hover:bg-[#25584b]"
                   >
                     View projects
                     <ArrowUpRight className="h-4 w-4" />
@@ -144,13 +141,13 @@ export default function AboutSection() {
                     className="surface-panel rounded-[1.45rem] p-5"
                   >
                     <div className="flex items-start justify-between gap-4">
-                      <h3 className="mt-2 text-lg font-semibold text-white">{item.title}</h3>
-                      <item.icon className="mt-1 h-5 w-5 text-emerald-200/70" />
+                      <h3 className="mt-2 text-lg font-semibold text-[#221910]">{item.title}</h3>
+                      <item.icon className="mt-1 h-5 w-5 text-[#2d6a5b]/75" />
                     </div>
-                    <ul className="mt-4 space-y-2 text-sm text-white/68">
+                    <ul className="mt-4 space-y-2 text-sm text-[#5d5246]">
                       {item.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-3">
-                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-300/80" />
+                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#2d6a5b]/80" />
                           <span className="leading-relaxed">{bullet}</span>
                         </li>
                       ))}
@@ -163,27 +160,27 @@ export default function AboutSection() {
             <aside className="space-y-5 lg:sticky lg:top-24">
               <div className="surface-panel p-5 sm:p-6">
                 <div className="flex items-center justify-between">
-                  <p className="font-mono-accent text-[0.68rem] uppercase tracking-[0.24em] text-white/52">
+                  <p className="font-mono-accent text-[0.68rem] uppercase tracking-[0.24em] text-[#7a6b59]">
                     Quick facts
                   </p>
-                  <Gauge className="h-5 w-5 text-white/56" />
+                  <Gauge className="h-5 w-5 text-[#7a6b59]" />
                 </div>
                 <div className="mt-4 grid gap-3">
                   {quickFacts.map((fact) => (
                     <div
                       key={fact.label}
-                      className="rounded-[1.2rem] border border-white/10 bg-black/22 px-4 py-4"
+                      className="rounded-[1.2rem] border border-black/10 bg-[#efe7db]/88 px-4 py-4"
                     >
                       <div className="flex items-start justify-between gap-4">
                         <div>
-                          <p className="font-mono-accent text-[0.65rem] uppercase tracking-[0.2em] text-white/42">
+                          <p className="font-mono-accent text-[0.65rem] uppercase tracking-[0.2em] text-[#867664]">
                             {fact.label}
                           </p>
-                          <p className="mt-2 text-sm font-semibold leading-6 text-white">
+                          <p className="mt-2 text-sm font-semibold leading-6 text-[#221910]">
                             {fact.value}
                           </p>
                         </div>
-                        <fact.icon className="mt-1 h-5 w-5 text-white/55" />
+                        <fact.icon className="mt-1 h-5 w-5 text-[#7a6b59]" />
                       </div>
                     </div>
                   ))}
@@ -191,7 +188,7 @@ export default function AboutSection() {
                 <div className="mt-5 grid gap-3">
                   <a
                     href={`mailto:${contactEmail}`}
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-semibold text-black transition-colors hover:bg-white/90"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#2d6a5b] px-4 py-3 text-sm font-semibold text-[#f8f3eb] transition-colors hover:bg-[#25584b]"
                   >
                     Email
                     <ArrowUpRight className="h-4 w-4" />
@@ -200,7 +197,7 @@ export default function AboutSection() {
                     href="https://www.linkedin.com/in/seany2004/"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-white/18 bg-white/[0.03] px-4 py-3 text-sm font-semibold text-white/82 transition-colors hover:bg-white/[0.08]"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-black/10 bg-[#f2ebdf] px-4 py-3 text-sm font-semibold text-[#46392d] transition-colors hover:bg-[#eadfce]"
                   >
                     LinkedIn
                     <ArrowUpRight className="h-4 w-4" />
@@ -209,14 +206,14 @@ export default function AboutSection() {
               </div>
 
               <div className="surface-panel p-5 sm:p-6">
-                <p className="font-mono-accent text-[0.68rem] uppercase tracking-[0.24em] text-white/52">
+                <p className="font-mono-accent text-[0.68rem] uppercase tracking-[0.24em] text-[#7a6b59]">
                   Currently
                 </p>
-                <h3 className="mt-3 text-2xl font-semibold text-white">Current priorities</h3>
-                <ul className="mt-4 space-y-3 text-sm text-white/70">
+                <h3 className="mt-3 text-2xl font-semibold text-[#221910]">Current priorities</h3>
+                <ul className="mt-4 space-y-3 text-sm text-[#5d5246]">
                   {nowItems.map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-300/80" />
+                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#2d6a5b]/80" />
                       <span className="leading-relaxed">{item}</span>
                     </li>
                   ))}
@@ -236,7 +233,7 @@ export default function AboutSection() {
                   Roles that shaped how I build:
                 </h3>
               </div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/60">
+              <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-[#efe7db] px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-[#6c5f51]">
                 <BadgeCheck className="h-4 w-4" />
                 Internships
               </div>
@@ -244,26 +241,26 @@ export default function AboutSection() {
 
 
             <div className="relative mt-8">
-              <div className="absolute left-2 top-0 h-full w-px bg-white/10 sm:left-3" />
+              <div className="absolute left-2 top-0 h-full w-px bg-black/10 sm:left-3" />
               <ol className="space-y-6">
                 {experience.map((role) => (
                   <li key={`${role.company}-${role.role}`} className="relative pl-8 sm:pl-10">
-                    <span className="absolute left-0 top-2.5 h-3 w-3 rounded-full bg-emerald-300/80" />
-                    <article className="rounded-[1.55rem] border border-white/10 bg-black/24 p-5">
+                    <span className="absolute left-0 top-2.5 h-3 w-3 rounded-full bg-[#2d6a5b]/80" />
+                    <article className="rounded-[1.55rem] border border-black/10 bg-[#efe7db]/88 p-5">
                       <div className="flex items-start justify-between gap-4">
                         <div>
-                          <p className="font-mono-accent text-[0.65rem] uppercase tracking-[0.22em] text-white/45">
+                          <p className="font-mono-accent text-[0.65rem] uppercase tracking-[0.22em] text-[#7b6d5c]">
                             {role.company}
                           </p>
-                          <h4 className="mt-2 text-lg font-semibold text-white">{role.role}</h4>
-                          <p className="mt-1 text-sm text-white/58">{role.focus}</p>
+                          <h4 className="mt-2 text-lg font-semibold text-[#221910]">{role.role}</h4>
+                          <p className="mt-1 text-sm text-[#685c4e]">{role.focus}</p>
                         </div>
-                        <ArrowUpRight className="mt-1 h-4 w-4 text-white/42" />
+                        <ArrowUpRight className="mt-1 h-4 w-4 text-[#877764]" />
                       </div>
-                      <ul className="mt-4 space-y-2 text-sm text-white/70">
+                      <ul className="mt-4 space-y-2 text-sm text-[#5d5246]">
                         {role.bullets.map((bullet) => (
                           <li key={bullet} className="flex items-start gap-3">
-                            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-300/80" />
+                            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#2d6a5b]/80" />
                             <span className="leading-relaxed">{bullet}</span>
                           </li>
                         ))}
@@ -281,10 +278,10 @@ export default function AboutSection() {
         <div className="page-container pb-20 sm:pb-24">
           <div className="grid gap-5 lg:grid-cols-[1.08fr_0.92fr]">
             <div className="surface-panel p-5 sm:p-6">
-              <h2 className="mt-2 text-xl font-semibold text-white sm:text-2xl">
+              <h2 className="mt-2 text-xl font-semibold text-[#221910] sm:text-2xl">
               Outside of Work:
               </h2>
-              <p className="mt-3 max-w-prose text-sm leading-7 text-white/70">
+              <p className="mt-3 max-w-prose text-sm leading-7 text-[#5d5246]">
                 I serve on the board of Fence Like an Olympian in Belfast and work as a crew trainer
                 at McDonald&apos;s. Outside work, I stay active through golf, running, the gym, and
                 mentoring.
@@ -293,7 +290,7 @@ export default function AboutSection() {
                 {outsideTags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono-accent inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white/68"
+                    className="font-mono-accent inline-flex items-center gap-2 rounded-full border border-black/10 bg-[#efe7db] px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#66594b]"
                   >
                     {tag}
                   </span>
@@ -302,7 +299,7 @@ export default function AboutSection() {
             </div>
 
             <div className="surface-panel p-3 sm:p-4">
-              <div className="aspect-video w-full overflow-hidden rounded-[1.35rem] border border-white/10 bg-black/30 shadow-[0_12px_30px_rgba(0,0,0,0.35)]">
+              <div className="aspect-video w-full overflow-hidden rounded-[1.35rem] border border-black/10 bg-[#e8dece] shadow-[0_12px_30px_rgba(78,60,42,0.12)]">
                 <video
                   className="h-full w-full object-cover"
                   src="/swing.mp4"
