@@ -163,7 +163,6 @@ export default function AboutSection() {
                   <p className="font-mono-accent text-[0.68rem] uppercase tracking-[0.24em] text-[#7a6b59]">
                     Quick facts
                   </p>
-                  <Gauge className="h-5 w-5 text-[#7a6b59]" />
                 </div>
                 <div className="mt-4 grid gap-3">
                   {quickFacts.map((fact) => (
@@ -205,11 +204,8 @@ export default function AboutSection() {
                 </div>
               </div>
 
-              <div className="surface-panel p-5 sm:p-6">
-                <p className="font-mono-accent text-[0.68rem] uppercase tracking-[0.24em] text-[#7a6b59]">
-                  Currently
-                </p>
-                <h3 className="mt-3 text-2xl font-semibold text-[#221910]">Current priorities</h3>
+              <div className="surface-panel p-5 sm:p-4">
+                <h3 className="mt-2 text-2xl font-semibold text-[#221910]">Currently:</h3>
                 <ul className="mt-4 space-y-3 text-sm text-[#5d5246]">
                   {nowItems.map((item) => (
                     <li key={item} className="flex items-start gap-3">
