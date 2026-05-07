@@ -49,7 +49,7 @@ const experience = [
   },
   {
     company: "Citi",
-    role: "Full Stack SWE",
+    role: "Full Stack (React + TypeScript + Kotlin)",
     focus: "Equity Derivatives",
     bullets: [
       "Built internal tooling to surface trade lifecycle insights for desks.",
@@ -77,8 +77,8 @@ const experience = [
 ];
 
 const nowItems = [
+  "Joining APRIL AI Hub as part of the DeepMind Research Internship",
   "Final-year dissertation on GPU-accelerated option pricing.",
-  "Sharpening this portfolio into a cleaner project archive.",
 ];
 
 const outsideTags = ["Running", "Golf", "Volunteering", "Mentoring", "Hackathons",];
@@ -86,7 +86,7 @@ const outsideTags = ["Running", "Golf", "Volunteering", "Mentoring", "Hackathons
 const quickFacts = [
   {
     label: "Location",
-    value: "Belfast / London",
+    value: "Belfast / London / Edinburgh",
     icon: Globe,
   },
   {
@@ -118,10 +118,6 @@ export default function AboutSection() {
                   <h2 className="display-title max-w-[12ch] text-[clamp(2.4rem,6vw,4.6rem)] leading-[0.95]">
                     Building useful software for complex environments.
                   </h2>
-                  <p className="muted-copy max-w-[40rem]">
-                    The work I enjoy most is turning messy workflows into reliable interfaces with
-                    clean architecture behind them.
-                  </p>
                 </div>
                 <div className="flex flex-col gap-3 sm:flex-row">
                   <Link
