@@ -12,6 +12,10 @@ import {
     Users,
 } from "lucide-react";
 import TextScrollWordReveal from "@/components/TextScrollReveal";
+import ExperienceTimelineProgress from "@/components/ExperienceTimelineProgress";
+import ExperienceCardMotion from "@/components/ExperienceCardMotion";
+import ExperienceProgressCircle from "@/components/ExperienceProgressCircle";
+import {SiPython, SiReact} from "react-icons/si";
 
 const contactEmail = "syalcin01@qub.ac.uk";
 
@@ -73,6 +77,84 @@ const experience = [
         bullets: [
             "Implemented Selenium test suites to harden critical user flows.",
             "Performed exploratory and regression testing and logged critical defects.",
+        ],
+    },
+];
+
+const experience1 = [
+    {
+        company: "AIMA",
+        role: "Full Stack SWE (Python + React)",
+        focus: "Product demos and feature delivery",
+        dates: "Jun 2025 – Present",
+        tech: [
+            {label: "Python", Icon: SiPython, color: "#F59E0B"},
+            {label: "React", Icon: SiReact, color: "#22D3EE"},
+        ],
+        current: true,
+        bullets: [
+            "Shipped investor-facing demo features on cycles measured in days, not sprints.",
+            "Closed the loop between client feedback sessions and the next release.",
+        ],
+    },
+    {
+        company: "AIMA",
+        role: "Full Stack SWE (Python + React)",
+        focus: "Product demos and feature delivery",
+        dates: "Jun 2025 – Present",
+        tech: [
+            {label: "Python", Icon: SiPython, color: "#F59E0B"},
+            {label: "React", Icon: SiReact, color: "#22D3EE"},
+        ],
+        current: true,
+        bullets: [
+            "Shipped investor-facing demo features on cycles measured in days, not sprints.",
+            "Closed the loop between client feedback sessions and the next release.",
+        ],
+    },
+    {
+        company: "AIMA",
+        role: "Full Stack SWE (Python + React)",
+        focus: "Product demos and feature delivery",
+        dates: "Jun 2025 – Present",
+        tech: [
+            {label: "Python", Icon: SiPython, color: "#F59E0B"},
+            {label: "React", Icon: SiReact, color: "#22D3EE"},
+        ],
+        current: true,
+        bullets: [
+            "Shipped investor-facing demo features on cycles measured in days, not sprints.",
+            "Closed the loop between client feedback sessions and the next release.",
+        ],
+    },
+    {
+        company: "AIMA",
+        role: "Full Stack SWE (Python + React)",
+        focus: "Product demos and feature delivery",
+        dates: "Jun 2025 – Present",
+        tech: [
+            {label: "Python", Icon: SiPython, color: "#F59E0B"},
+            {label: "React", Icon: SiReact, color: "#22D3EE"},
+        ],
+        current: true,
+        bullets: [
+            "Shipped investor-facing demo features on cycles measured in days, not sprints.",
+            "Closed the loop between client feedback sessions and the next release.",
+        ],
+    },
+    {
+        company: "AIMA",
+        role: "Full Stack SWE (Python + React)",
+        focus: "Product demos and feature delivery",
+        dates: "Jun 2025 – Present",
+        tech: [
+            {label: "Python", Icon: SiPython, color: "#F59E0B"},
+            {label: "React", Icon: SiReact, color: "#22D3EE"},
+        ],
+        current: true,
+        bullets: [
+            "Shipped investor-facing demo features on cycles measured in days, not sprints.",
+            "Closed the loop between client feedback sessions and the next release.",
         ],
     },
 ];
@@ -232,39 +314,55 @@ export default function AboutSection() {
 
 
                         <div className="relative mt-8">
-                            <div className="absolute left-2 top-0 h-full w-px bg-black/10 sm:left-3"/>
+                            <ExperienceTimelineProgress/>
                             <ol className="space-y-6">
-                                {experience.map((role) => (
+                                {experience1.map((role) => (
                                     <li key={`${role.company}-${role.role}`} className="relative pl-8 sm:pl-10">
-                                        <span className="absolute left-0 top-2.5 h-3 w-3 rounded-full bg-[#2d6a5b]/80"/>
-                                        <article
-                                            className="rounded-[1.55rem] border border-black/10 bg-[#efe7db]/88 p-5">
+                                        <ExperienceProgressCircle/>
+                                        <ExperienceCardMotion
+                                            className="relative rounded-[1.55rem] border border-black/15 bg-[#faf6ec] p-5 shadow-[0_14px_30px_rgba(66,49,34,0.1)]">
+                                            {role.current && (
+                                                <span
+                                                    className="absolute -top-2.5 left-5 rounded-full bg-[#caa676] px-2.5 py-0.5 font-mono-accent text-[0.6rem] uppercase tracking-[0.1em] text-[#6d4f20]">
+      Current focus
+    </span>
+                                            )}
                                             <div className="flex items-start justify-between gap-4">
-                                                <div>
-                                                    <p className="font-mono-accent text-[0.65rem] uppercase tracking-[0.22em] text-[#7b6d5c]">
-                                                        {role.company}
-                                                    </p>
-                                                    <h4 className="mt-2 text-lg font-semibold text-[#221910]">{role.role}</h4>
-                                                    <p className="mt-1 text-sm text-[#685c4e]">{role.focus}</p>
-                                                </div>
-                                                <ArrowUpRight className="mt-1 h-4 w-4 text-[#877764]"/>
+                                                <p className="font-mono-accent text-[0.65rem] uppercase tracking-[0.22em] text-[#7b6d5c]">
+                                                    {role.company}
+                                                </p>
+                                                <span
+                                                    className="font-mono-accent border-b border-dashed border-[#2d6a5b]/40 text-[0.66rem] text-[#2d6a5b]">
+      {role.dates}
+    </span>
                                             </div>
-                                            <ul className="mt-4 space-y-2 text-sm text-[#5d5246]">
+                                            <h4 className="mt-2 text-lg font-semibold text-[#221910]">{role.role}</h4>
+                                            <p className="mt-1 text-sm text-[#685c4e]">{role.focus}</p>
+                                            <div className="mt-3 flex flex-wrap gap-1.5">
+                                                {role.tech.map((t) => (
+                                                    <span key={t.label}
+                                                          className="inline-flex items-center gap-1.5 rounded-full border border-black/10 bg-white/55 px-2.5 py-1 font-mono-accent text-[0.64rem] text-[#221910]">
+        <t.Icon className="h-3 w-3" style={{color: t.color}}/>
+                                                        {t.label}
+      </span>
+                                                ))}
+                                            </div>
+                                            <ul className="mt-3 space-y-2 text-sm text-[#5d5246]">
                                                 {role.bullets.map((bullet) => (
                                                     <li key={bullet} className="flex items-start gap-3">
-                                                        <span
-                                                            className="mt-2 h-1.5 w-1.5 rounded-full bg-[#2d6a5b]/80"/>
+                                                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#2d6a5b]"/>
                                                         <span className="leading-relaxed">{bullet}</span>
                                                     </li>
                                                 ))}
                                             </ul>
-                                        </article>
+                                        </ExperienceCardMotion>
                                     </li>
                                 ))}
                             </ol>
                         </div>
                     </div>
                 </div>
+
             </section>
 
             <section id="contact" className="relative scroll-mt-24 sm:scroll-mt-28">
@@ -285,8 +383,8 @@ export default function AboutSection() {
                                         key={tag}
                                         className="font-mono-accent inline-flex items-center gap-2 rounded-full border border-black/10 bg-[#efe7db] px-4 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#66594b]"
                                     >
-                    {tag}
-                  </span>
+                {tag}
+            </span>
                                 ))}
                             </div>
                         </div>
@@ -307,9 +405,12 @@ export default function AboutSection() {
                         </div>
                     </div>
                 </div>
+
+
             </section>
         </section>
-    );
+    )
+        ;
 }
 
 
