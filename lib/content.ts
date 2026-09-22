@@ -1,11 +1,14 @@
 // All site copy and links live here, so most content edits only touch this file.
 import type { ComponentType, CSSProperties } from "react";
-import { Globe, GraduationCap, Layers, Rocket, ShieldCheck, Users } from "lucide-react";
+import { Briefcase, Globe, GraduationCap, Layers, Rocket, ShieldCheck, Users } from "lucide-react";
 import { FaJava } from "react-icons/fa";
 import {
   SiAngular,
   SiDocker,
+  SiJavascript,
   SiKotlin,
+  SiLangchain,
+  SiOpenai,
   SiPython,
   SiReact,
   SiRedhat,
@@ -28,10 +31,13 @@ const tech = {
   java: { name: "Java", Icon: FaJava, color: "#F97316" },
   docker: { name: "Docker", Icon: SiDocker, color: "#38BDF8" },
   typescript: { name: "TypeScript", Icon: SiTypescript, color: "#60A5FA" },
+  javascript: { name: "JavaScript", Icon: SiJavascript, color: "#EAB308" },
   react: { name: "React", Icon: SiReact, color: "#22D3EE" },
   python: { name: "Python", Icon: SiPython, color: "#F59E0B" },
   angular: { name: "Angular", Icon: SiAngular, color: "#F43F5E" },
   kotlin: { name: "Kotlin", Icon: SiKotlin, color: "#A855F7" },
+  langchain: { name: "LangChain", Icon: SiLangchain, color: "#1C3C3C" },
+  openai: { name: "OpenAI", Icon: SiOpenai, color: "#10A37F" },
   selenium: { name: "Selenium", Icon: SiSelenium, color: "#43B02A" },
   rhel: { name: "RHEL", Icon: SiRedhat, color: "#EE0000" },
   vercel: { name: "Vercel", Icon: SiVercel, color: "#FFFFFF" },
@@ -92,17 +98,21 @@ export const highlights: { title: string; Icon: Icon; bullets: string[] }[] = [
 ];
 
 export const quickFacts: { label: string; value: string; Icon: Icon }[] = [
-  { label: "Location", value: "Belfast / London / Edinburgh", Icon: Globe },
+  { label: "Location", value: "London", Icon: Globe },
   {
     label: "Status",
-    value: "Final-year CS @ Queen's University Belfast, incoming SWE @ Citi",
-    Icon: GraduationCap,
+    value: "SWE @ Citi",
+    Icon: Briefcase,
   },
+  {
+    label: "Education",
+    value: "First Class Honours Graduate From Queen's University Belfast",
+    Icon: GraduationCap
+  }
 ];
 
 export const currently = [
-  "Joining APRIL AI Hub as part of the DeepMind Research Internship",
-  "Final-year dissertation on GPU-accelerated option pricing.",
+  "Working at Citi as a Graduate Software Engineer"
 ];
 
 // ---- Experience timeline ----
@@ -118,13 +128,25 @@ export type Job = {
 };
 
 export const experience: Job[] = [
+    {
+    company: "APRIL AI HUB",
+    role: "AI Researcher",
+    focus: "Agentic AI for Triboelectric Nanogenerators",
+    dates: "Jun 2026 – Jul 2026",
+    current: false,
+    tech: [tech.python, tech.langchain, tech.openai],
+    bullets: [
+      "Built a RAG + multi-agent pipeline (LangGraph, ChromaDB) that extracted 400+ metrics from 24 research papers at 80% precision and recall.",
+      "Research accepted for presentation at the UK AI Research Symposium (UKAIRS).",
+    ],
+  },
   {
     company: "AIMA",
     role: "Full Stack SWE (Python + React)",
     focus: "Product demos and feature delivery",
-    dates: "Jun 2025 – Present",
-    current: true,
-    tech: [tech.python, tech.react],
+    dates: "Jun 2025 – Jan 2026",
+    current: false,
+    tech: [tech.python, tech.react, tech.javascript],
     bullets: [
       "Shipped investor-facing demo features on cycles measured in days, not sprints.",
       "Closed the loop between client feedback sessions and the next release.",
