@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
+import Image from "next/image";
 import { type ReactNode, useRef } from "react";
 import BulletList from "@/components/BulletList";
 import { experience, type Job } from "@/lib/content";
@@ -39,18 +40,23 @@ function JobDetails({ job }: { job: Job }) {
           Current focus
         </span>
       )}
-      <div className="flex items-start justify-between gap-4">
-        <p className="font-mono-accent text-[0.65rem] uppercase tracking-[0.22em] text-[#7b6d5c]">
-          {job.company}
-        </p>
-        {job.dates && (
-          <span className="font-mono-accent border-b border-dashed border-[#2d6a5b]/40 text-[0.66rem] text-[#2d6a5b]">
-            {job.dates}
-          </span>
-        )}
+      <div className="flex items-start gap-4">
+        <CompanyLogo job={job} />
+        <div className="min-w-0 flex-1">
+          <div className="flex items-start justify-between gap-4">
+            <p className="font-mono-accent text-[0.65rem] uppercase tracking-[0.22em] text-[#7b6d5c]">
+              {job.company}
+            </p>
+            {job.dates && (
+              <span className="font-mono-accent shrink-0 border-b border-dashed border-[#2d6a5b]/40 text-[0.66rem] text-[#2d6a5b]">
+                {job.dates}
+              </span>
+            )}
+          </div>
+          <h4 className="mt-1 text-lg font-semibold text-[#221910]">{job.role}</h4>
+          <p className="mt-1 text-sm text-[#685c4e]">{job.focus}</p>
+        </div>
       </div>
-      <h4 className="mt-2 text-lg font-semibold text-[#221910]">{job.role}</h4>
-      <p className="mt-1 text-sm text-[#685c4e]">{job.focus}</p>
       <div className="mt-3 flex flex-wrap gap-1.5">
         {job.tech.map(({ name, Icon, color }) => (
           <span
@@ -64,6 +70,27 @@ function JobDetails({ job }: { job: Job }) {
       </div>
       <BulletList items={job.bullets} className="mt-3 space-y-2" />
     </>
+  );
+}
+
+function CompanyLogo({ job }: { job: Job }) {
+  return (
+    <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-black/10 bg-[#f9f3ea]">
+      {job.logoSrc ? (
+        <Image
+          src={job.logoSrc}
+          alt={`${job.company} logo`}
+          width={48}
+          height={48}
+          sizes="32px"
+          className="h-8 w-8 object-contain"
+        />
+      ) : (
+        <span aria-hidden="true" className="font-mono-accent text-base font-semibold text-[#2d6a5b]">
+          {job.company.charAt(0)}
+        </span>
+      )}
+    </span>
   );
 }
 

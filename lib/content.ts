@@ -1,6 +1,6 @@
 // All site copy and links live here, so most content edits only touch this file.
 import type { ComponentType, CSSProperties } from "react";
-import { Briefcase, Globe, GraduationCap, Layers, Rocket, ShieldCheck, Users } from "lucide-react";
+import { Briefcase, Globe, GraduationCap } from "lucide-react";
 import { FaJava } from "react-icons/fa";
 import {
   SiAngular,
@@ -47,12 +47,20 @@ const tech = {
 
 export const heroLines = ["Software engineer for fintech systems", "Full-stack builder."];
 
+// ---- Company logos (files in /public) ----
+
+const logos = {
+  citi: "/Citi_logo_March_2023.svg.png",
+  allstate: "/allstate-insurance-2.svg",
+  aima: "/aima-logo-nobg-qz0s47Vk.png",
+};
+
 // ---- "Experience" logo strip ----
 
 export const proofItems: { org: string; role: string; logoSrc: string }[] = [
-  { org: "Citi", role: "Equity Derivatives & Custody", logoSrc: "/Citi_logo_March_2023.svg.png" },
-  { org: "Allstate", role: "QA Engineering", logoSrc: "/allstate-insurance-2.svg" },
-  { org: "AIMA", role: "SWE & Product", logoSrc: "/aima-logo-nobg-qz0s47Vk.png" },
+  { org: "Citi", role: "Equity Derivatives & Custody", logoSrc: logos.citi },
+  { org: "Allstate", role: "QA Engineering", logoSrc: logos.allstate },
+  { org: "AIMA", role: "SWE & Product", logoSrc: logos.aima },
   { org: "Data & AI Society", role: "Co-Founder & Treasurer", logoSrc: "/DAI.png" },
   { org: "Consulting & Entrepreneurship Society", role: "Co-founder & VP", logoSrc: "/Consulting.png" },
 ];
@@ -73,29 +81,6 @@ export const toolkit: Tech[] = [
 // ---- About ----
 
 export const aboutHeadline = "Building useful software for complex environments.";
-
-export const highlights: { title: string; Icon: Icon; bullets: string[] }[] = [
-  {
-    title: "Full-Stack Builder",
-    Icon: Layers,
-    bullets: ["API-to-UI delivery for real users.", "Clear frontends for data-heavy workflows."],
-  },
-  {
-    title: "Quality Mindset",
-    Icon: ShieldCheck,
-    bullets: ["QA automation with Selenium + Java.", "Strong focus on reproducibility and edge cases."],
-  },
-  {
-    title: "Startup Execution",
-    Icon: Rocket,
-    bullets: ["Fast iteration from user feedback.", "Demo-ready delivery without losing product discipline."],
-  },
-  {
-    title: "Leadership",
-    Icon: Users,
-    bullets: ["Built student communities and events.", "Comfortable communicating across teams."],
-  },
-];
 
 export const quickFacts: { label: string; value: string; Icon: Icon }[] = [
   { label: "Location", value: "London", Icon: Globe },
@@ -119,6 +104,8 @@ export const currently = [
 
 export type Job = {
   company: string;
+  // Path to a logo in /public; without one the card shows the company's first letter.
+  logoSrc?: string;
   role: string;
   focus: string;
   dates?: string;
@@ -142,6 +129,7 @@ export const experience: Job[] = [
   },
   {
     company: "AIMA",
+    logoSrc: logos.aima,
     role: "Full Stack SWE (Python + React)",
     focus: "Product demos and feature delivery",
     dates: "Jun 2025 – Jan 2026",
@@ -154,6 +142,7 @@ export const experience: Job[] = [
   },
   {
     company: "Citi",
+    logoSrc: logos.citi,
     role: "Full Stack (React + TypeScript + Kotlin)",
     focus: "Equity Derivatives",
     tech: [tech.react, tech.typescript, tech.kotlin],
@@ -164,6 +153,7 @@ export const experience: Job[] = [
   },
   {
     company: "Citi",
+    logoSrc: logos.citi,
     role: "Full Stack SWE (Angular + TypeScript + Java)",
     focus: "Custody platforms",
     tech: [tech.angular, tech.typescript, tech.java],
@@ -174,6 +164,7 @@ export const experience: Job[] = [
   },
   {
     company: "Allstate",
+    logoSrc: logos.allstate,
     role: "QA Engineering (Java + Selenium)",
     focus: "Automation and reliability",
     tech: [tech.java, tech.selenium],

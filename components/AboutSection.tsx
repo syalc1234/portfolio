@@ -1,7 +1,7 @@
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import BulletList from "@/components/BulletList";
 import TextScrollReveal from "@/components/TextScrollReveal";
-import { aboutHeadline, currently, highlights, links, quickFacts } from "@/lib/content";
+import { aboutHeadline, currently, links, quickFacts } from "@/lib/content";
 
 const PRIMARY_BUTTON =
   "inline-flex items-center justify-center gap-2 rounded-full bg-[#2d6a5b] text-sm font-semibold text-[#f8f3eb] transition-colors hover:bg-[#25584b]";
@@ -24,18 +24,6 @@ export default function AboutSection() {
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
               </div>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              {highlights.map(({ title, Icon, bullets }) => (
-                <article key={title} className="surface-panel rounded-[1.45rem] p-5">
-                  <div className="flex items-start justify-between gap-4">
-                    <h3 className="mt-2 text-lg font-semibold text-[#221910]">{title}</h3>
-                    <Icon className="mt-1 h-5 w-5 text-[#2d6a5b]/75" />
-                  </div>
-                  <BulletList items={bullets} className="mt-4 space-y-2" />
-                </article>
-              ))}
             </div>
           </div>
 
