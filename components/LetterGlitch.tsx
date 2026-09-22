@@ -1,20 +1,17 @@
 "use client"
 import { useRef, useEffect, useState } from 'react';
 
+// Canvas background of randomly changing characters, used behind the hero.
 const LetterGlitch = ({
   glitchColors = ['#2b4539', '#61dca3', '#61b3dc'],
   glitchSpeed = 50,
-  centerVignette = false,
-  outerVignette = false,
   smooth = true,
   characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>.,0123456789'
 }: {
-  glitchColors: string[];
-  glitchSpeed: number;
-  centerVignette: boolean;
-  outerVignette: boolean;
-  smooth: boolean;
-  characters: string;
+  glitchColors?: string[];
+  glitchSpeed?: number;
+  smooth?: boolean;
+  characters?: string;
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animationRef = useRef<number | null>(null);
@@ -196,8 +193,6 @@ const LetterGlitch = ({
 
   useEffect(() => {
     // Reduce canvas work on small screens and for users who prefer less motion.
-    if (typeof window === 'undefined') return;
-
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const smallScreen = window.matchMedia('(max-width: 640px)');
 
@@ -224,17 +219,12 @@ const LetterGlitch = ({
 
     updateProfile();
 
-    const handleChange = () => updateProfile();
-    reducedMotion.addEventListener?.('change', handleChange);
-    smallScreen.addEventListener?.('change', handleChange);
-    reducedMotion.addListener?.(handleChange);
-    smallScreen.addListener?.(handleChange);
+    reducedMotion.addEventListener('change', updateProfile);
+    smallScreen.addEventListener('change', updateProfile);
 
     return () => {
-      reducedMotion.removeEventListener?.('change', handleChange);
-      smallScreen.removeEventListener?.('change', handleChange);
-      reducedMotion.removeListener?.(handleChange);
-      smallScreen.removeListener?.(handleChange);
+      reducedMotion.removeEventListener('change', updateProfile);
+      smallScreen.removeEventListener('change', updateProfile);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [glitchSpeed, smooth]);
@@ -270,12 +260,7 @@ const LetterGlitch = ({
   return (
     <div className="relative h-full w-full overflow-hidden bg-[#efe8dc]">
       <canvas ref={canvasRef} className="block w-full h-full" />
-      {outerVignette && (
-        <div className="absolute left-0 top-0 h-full w-full pointer-events-none bg-[radial-gradient(circle,_rgba(227,221,211,0)_60%,_rgba(106,84,58,0.3)_100%)]"></div>
-      )}
-      {centerVignette && (
-        <div className="absolute left-0 top-0 h-full w-full pointer-events-none bg-[radial-gradient(circle,_rgba(248,243,235,0.7)_0%,_rgba(248,243,235,0)_60%)]"></div>
-      )}
+      <div className="absolute left-0 top-0 h-full w-full pointer-events-none bg-[radial-gradient(circle,_rgba(248,243,235,0.7)_0%,_rgba(248,243,235,0)_60%)]" />
     </div>
   );
 };

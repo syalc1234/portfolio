@@ -1,15 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Github, Linkedin, Mail, Menu, X } from "lucide-react";
 import Link from "next/link";
+import { links } from "@/lib/content";
 
-type NavItem = {
-  id: string;
-  label: string;
-};
-
-const NAV_ITEMS: NavItem[] = [
+// Each id must match a section id on the page.
+const NAV_ITEMS = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
 ];
@@ -25,14 +22,6 @@ export default function Navbar() {
 
   const listRef = useRef<HTMLDivElement | null>(null);
   const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
-
-  const indicatorStyle = useMemo(
-    () => ({
-      width: `${indicator.width}px`,
-      transform: `translateX(${indicator.left}px)`,
-    }),
-    [indicator.left, indicator.width]
-  );
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 28);
@@ -147,7 +136,7 @@ export default function Navbar() {
             >
               <span
                 className="pointer-events-none absolute left-0 top-1/2 h-9 -translate-y-1/2 rounded-full bg-[#e3d5c1] transition-transform duration-300 motion-reduce:transition-none"
-                style={indicatorStyle}
+                style={{ width: indicator.width, transform: `translateX(${indicator.left}px)` }}
                 aria-hidden
               />
               {NAV_ITEMS.map((item) => (
@@ -170,24 +159,7 @@ export default function Navbar() {
           </div>
 
           <div className="hidden items-center gap-3 md:flex">
-            <a
-              className={ICON_BUTTON}
-              href="https://github.com/syalc1234"
-              aria-label="GitHub profile"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Github className="h-5 w-5" />
-            </a>
-            <a
-              className={ICON_BUTTON}
-              href="https://www.linkedin.com/in/seany2004/"
-              aria-label="LinkedIn profile"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
+            <SocialLinks />
           </div>
 
           <button
@@ -247,34 +219,30 @@ export default function Navbar() {
 
         <div className="mt-auto flex flex-col gap-4">
           <a
-            href="mailto:syalcin01@qub.ac.uk"
+            href={`mailto:${links.email}`}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-[#2d6a5b] px-4 py-3 text-sm font-semibold text-[#f8f3eb] transition-colors hover:bg-[#25584b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2d6a5b]/35"
           >
             <Mail className="h-4 w-4" />
             Email
           </a>
           <div className="flex items-center gap-3">
-            <a
-              className={ICON_BUTTON}
-              href="https://github.com/syalc1234"
-              aria-label="GitHub profile"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Github className="h-5 w-5" />
-            </a>
-            <a
-              className={ICON_BUTTON}
-              href="https://www.linkedin.com/in/seany2004/"
-              aria-label="LinkedIn profile"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
+            <SocialLinks />
           </div>
         </div>
       </aside>
+    </>
+  );
+}
+
+function SocialLinks() {
+  return (
+    <>
+      <a className={ICON_BUTTON} href={links.github} aria-label="GitHub profile" target="_blank" rel="noreferrer">
+        <Github className="h-5 w-5" />
+      </a>
+      <a className={ICON_BUTTON} href={links.linkedin} aria-label="LinkedIn profile" target="_blank" rel="noreferrer">
+        <Linkedin className="h-5 w-5" />
+      </a>
     </>
   );
 }

@@ -1,6 +1,5 @@
-// app/layout.tsx (RootLayout)
 import type { Metadata } from "next";
-import { Fraunces, Instrument_Sans, JetBrains_Mono } from "next/font/google";
+import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
@@ -11,11 +10,6 @@ const instrumentSans = Instrument_Sans({
 
 const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-});
-
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
   subsets: ["latin"],
 });
 
@@ -32,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${instrumentSans.variable} ${jetBrainsMono.variable} ${fraunces.variable} overflow-x-hidden bg-[#e3ddd3] text-[#261f17] antialiased`}
+        className={`${instrumentSans.variable} ${jetBrainsMono.variable} overflow-x-hidden bg-[#e3ddd3] text-[#261f17] antialiased`}
       >
         <div
           aria-hidden
